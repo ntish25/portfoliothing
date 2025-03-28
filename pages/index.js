@@ -8,19 +8,14 @@ import { motion } from 'framer-motion'
 const InteractiveText = ({ text }) => {
   return (
     <motion.span 
-      className="inline-block text-left text-zinc-300 transition-all duration-300 overflow-visible"
-      style={{
-        display: 'inline-block',
-        width: 'auto',
-        whiteSpace: 'nowrap',
-        paddingBottom: '0.1em' // Add slight padding to avoid clipping descenders
-      }}
+      className="inline-block text-left text-zinc-300 transition-all duration-300"
       whileHover={{
         background: "linear-gradient(135deg, #6ab7ff 0%, #ffc8a2 100%)",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",
         textFillColor: "transparent",
+        textShadow: "inset 0px 1px 1px rgba(0, 0, 0, 0.1)",
         transition: { duration: 0.3 }
       }}
     >
