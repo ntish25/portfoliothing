@@ -4,27 +4,35 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-// Interactive Text Component
+// Updated Header Component with Gradient Hover Effect
 const InteractiveText = ({ text }) => {
-  // Split text into characters for individual animation
-  const characters = text.split('');
-  
   return (
-    <div className="flex flex-wrap text-left">
-      {characters.map((char, index) => (
-        <motion.span
-          key={index}
-          className="inline-block transition-colors duration-300 text-zinc-300"
-          whileHover={{
-            color: `rgb(${Math.floor(Math.random() * 100) + 100}, ${Math.floor(Math.random() * 150) + 100}, ${Math.floor(Math.random() * 255)})`,
-            scale: 1.1,
-            transition: { duration: 0.2 }
-          }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </motion.span>
-      ))}
-    </div>
+    <motion.div 
+      className="inline-block text-left text-zinc-300 transition-all duration-300"
+      whileHover={{
+        boxShadow: "inset 0px 1px 2px rgba(0, 0, 0, 0.15)",
+        transition: { duration: 0.3 }
+      }}
+      style={{
+        borderRadius: "4px",
+        padding: "2px 4px",
+        margin: "-2px -4px"
+      }}
+    >
+      <motion.span 
+        className="inline-block"
+        whileHover={{
+          background: "linear-gradient(135deg, #6ab7ff 0%, #ffc8a2 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          textFillColor: "transparent",
+          transition: { duration: 0.3 }
+        }}
+      >
+        {text}
+      </motion.span>
+    </motion.div>
   );
 };
 
@@ -65,9 +73,9 @@ export default function Home() {
       {/* Hero Section */}
       <main className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 gap-16">
-          {/* Title Block - Now Interactive */}
+          {/* Title Block - Now Interactive with Gradient Hover */}
           <div className="text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-gowun text-zinc-300 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-gowun text-zinc-300 leading-tight">
             <InteractiveText text={"Figma truther from Atlanta."} />
             </h1>
             <p className="text-lg mt-8 max-w-2xl text-zinc-500 font-instrument">
