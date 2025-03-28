@@ -1,65 +1,28 @@
 // pages/index.js
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-// Interactive pixel grid component
-const PixelGrid = () => {
-  const [pixels, setPixels] = useState([]);
-  const gridSize = 15;
-  
-  useEffect(() => {
-    // Initialize grid
-    const initialGrid = [];
-    for (let i = 0; i < gridSize; i++) {
-      for (let j = 0; j < gridSize; j++) {
-        initialGrid.push({
-          id: `${i}-${j}`,
-          x: i,
-          y: j,
-          color: 'bg-zinc-800',
-          active: false
-        });
-      }
-    }
-    setPixels(initialGrid);
-  }, []);
-  
-  const handleMouseOver = (id) => {
-    setPixels(prevPixels => 
-      prevPixels.map(pixel => 
-        pixel.id === id 
-          ? { 
-              ...pixel, 
-              color: `bg-blue-${Math.floor(Math.random() * 3) + 5}00`, 
-              active: true 
-            } 
-          : pixel
-      )
-    );
-    
-    // Reset after delay
-    setTimeout(() => {
-      setPixels(prevPixels => 
-        prevPixels.map(pixel => 
-          pixel.id === id 
-            ? { ...pixel, color: 'bg-zinc-800', active: false } 
-            : pixel
-        )
-      );
-    }, 1500);
-  };
+// Interactive Text Component
+const InteractiveText = ({ text }) => {
+  // Split text into characters for individual animation
+  const characters = text.split('');
   
   return (
-    <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto grid grid-cols-15 gap-1">
-      {pixels.map((pixel) => (
-        <motion.div
-          key={pixel.id}
-          className={`w-4 h-4 ${pixel.color} hover:bg-blue-600 transition-colors duration-300`}
-          whileHover={{ scale: 1.2 }}
-          onMouseOver={() => handleMouseOver(pixel.id)}
-        />
+    <div className="flex flex-wrap text-left">
+      {characters.map((char, index) => (
+        <motion.span
+          key={index}
+          className="inline-block transition-colors duration-300 text-zinc-300"
+          whileHover={{
+            color: `rgb(${Math.floor(Math.random() * 100) + 100}, ${Math.floor(Math.random() * 150) + 100}, ${Math.floor(Math.random() * 255)})`,
+            scale: 1.1,
+            transition: { duration: 0.2 }
+          }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </motion.span>
       ))}
     </div>
   );
@@ -67,20 +30,32 @@ const PixelGrid = () => {
 
 export default function Home() {
   return (
-    <div className="bg-zinc-900 min-h-screen text-zinc-400 font-mono selection:bg-blue-600 selection:text-zinc-100">
+    <div className="bg-zinc-900 min-h-screen font-instrument selection:bg-blue-600 selection:text-zinc-100">
       <Head>
-        <title>nathan t | creative technologist</title>
-        <meta name="description" content="Portfolio of Nathan Tishgarten - Creative Technologist" />
+        <title>nathan t | portfolio</title>
+        <meta name="description" content="Portfolio of Nathan Tishgarten" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✧</text></svg>" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+        <style jsx global>{`
+          @font-face {
+            font-family: 'Departure Mono';
+            src: url('/fonts/DepartureMono.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+          }
+        `}</style>
       </Head>
       
       {/* Navigation */}
       <nav className="max-w-6xl mx-auto px-6 py-8 flex justify-between items-center">
-        <Link href="/" className="text-zinc-300 font-light tracking-widest text-lg">
+        <Link href="/" className="font-gowun text-zinc-300 font-light tracking-widest text-lg">
           n<span className="text-blue-500">.</span>t
         </Link>
         
-        <div className="flex space-x-8">
+        <div className="flex space-x-8 font-departure text-sm">
           <Link href="/work" className="text-zinc-400 hover:text-zinc-200 transition-colors">
             WORK
           </Link>
@@ -99,32 +74,20 @@ export default function Home() {
       {/* Hero Section */}
       <main className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 gap-16">
-          {/* Title Block */}
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-zinc-300 leading-tight">
-              <span>digital</span>
-              <span className="inline-block mx-3 px-4 py-1 bg-blue-600 text-zinc-100">designer</span>
-              <span>&</span><br />
-              <span className="inline-block mt-2">creative</span>
-              <span className="inline-block mx-3 px-4 py-1 bg-blue-600 text-zinc-100">developer</span>
+          {/* Title Block - Now Interactive */}
+          <div className="text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-gowun text-zinc-300 leading-tight">
+            <InteractiveText text={"Figma truther from Atlanta who refuses to be called a \"creative.\""} />
             </h1>
-            <p className="text-lg mt-8 max-w-2xl mx-auto text-zinc-500">
+            <p className="text-lg mt-8 max-w-2xl text-zinc-500 font-instrument">
               crafting pixel-perfect experiences at the intersection of design and technology
             </p>
           </div>
           
-          {/* Interactive Element */}
-          <div className="py-8">
-            <PixelGrid />
-            <p className="text-center text-zinc-600 mt-4 text-sm">
-              // hover over the pixels
-            </p>
-          </div>
-          
           {/* Currently Block */}
-          <div className="max-w-xl mx-auto">
-            <h2 className="text-sm font-mono uppercase tracking-wider text-zinc-600 mb-4">CURRENTLY</h2>
-            <div className="space-y-4">
+          <div className="max-w-xl">
+            <h2 className="text-sm font-departure uppercase tracking-wider text-zinc-600 mb-4">CURRENTLY</h2>
+            <div className="space-y-4 font-instrument">
               <p className="text-zinc-400 text-lg">
                 Building digital experiences for forward-thinking brands and startups.
               </p>
@@ -139,21 +102,21 @@ export default function Home() {
           
           {/* Featured Projects */}
           <div className="mt-16">
-            <h2 className="text-sm font-mono uppercase tracking-wider text-zinc-600 mb-8 text-center">SELECTED WORK</h2>
+            <h2 className="text-sm font-departure uppercase tracking-wider text-zinc-600 mb-8">SELECTED WORK</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-instrument">
               {/* Project 1 */}
               <div className="group">
                 <div className="bg-zinc-800 aspect-video overflow-hidden relative">
                   <div className="absolute inset-0 flex items-center justify-center text-zinc-700 group-hover:text-zinc-600 transition-colors">
                     PROJECT IMAGE
                   </div>
-                  <div className="absolute top-4 right-4 text-xs text-zinc-600">2024</div>
+                  <div className="absolute top-4 right-4 text-xs font-departure text-zinc-600">2024</div>
                   <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-zinc-900 to-transparent">
                     <h3 className="text-zinc-300 group-hover:text-blue-500 transition-colors">Project Name</h3>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-zinc-900 text-zinc-500">WEB</span>
-                      <span className="text-xs px-2 py-1 bg-zinc-900 text-zinc-500">DESIGN</span>
+                      <span className="text-xs px-2 py-1 font-departure bg-zinc-900 text-zinc-500">WEB</span>
+                      <span className="text-xs px-2 py-1 font-departure bg-zinc-900 text-zinc-500">DESIGN</span>
                     </div>
                   </div>
                 </div>
@@ -165,12 +128,12 @@ export default function Home() {
                   <div className="absolute inset-0 flex items-center justify-center text-zinc-700 group-hover:text-zinc-600 transition-colors">
                     PROJECT IMAGE
                   </div>
-                  <div className="absolute top-4 right-4 text-xs text-zinc-600">2024</div>
+                  <div className="absolute top-4 right-4 text-xs font-departure text-zinc-600">2024</div>
                   <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-zinc-900 to-transparent">
                     <h3 className="text-zinc-300 group-hover:text-blue-500 transition-colors">Project Name</h3>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-zinc-900 text-zinc-500">INTERACTIVE</span>
-                      <span className="text-xs px-2 py-1 bg-zinc-900 text-zinc-500">DEVELOPMENT</span>
+                      <span className="text-xs px-2 py-1 font-departure bg-zinc-900 text-zinc-500">INTERACTIVE</span>
+                      <span className="text-xs px-2 py-1 font-departure bg-zinc-900 text-zinc-500">DEVELOPMENT</span>
                     </div>
                   </div>
                 </div>
@@ -178,7 +141,7 @@ export default function Home() {
             </div>
             
             <div className="text-center mt-8">
-              <Link href="/work" className="inline-block px-4 py-2 border border-zinc-700 text-zinc-400 hover:border-blue-500 hover:text-blue-500 transition-colors">
+              <Link href="/work" className="inline-block px-4 py-2 border border-zinc-700 font-departure text-sm text-zinc-400 hover:border-blue-500 hover:text-blue-500 transition-colors">
                 VIEW ALL PROJECTS →
               </Link>
             </div>
@@ -187,15 +150,15 @@ export default function Home() {
       </main>
       
       {/* Footer */}
-      <footer className="max-w-6xl mx-auto px-6 py-8 mt-16 border-t border-zinc-800 text-zinc-600">
+      <footer className="max-w-6xl mx-auto px-6 py-8 mt-16 border-t border-zinc-800 text-zinc-600 font-instrument">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             © 2025 Nathan Tishgarten. All rights reserved.
           </div>
-          <div className="flex space-x-4">
-            <a href="mailto:hello@yourdomain.com" className="hover:text-zinc-400 transition-colors">Email</a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">Twitter</a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">GitHub</a>
+          <div className="flex space-x-4 font-departure text-sm">
+            <a href="mailto:hello@yourdomain.com" className="hover:text-zinc-400 transition-colors">EMAIL</a>
+            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">TWITTER</a>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">GITHUB</a>
           </div>
         </div>
       </footer>
