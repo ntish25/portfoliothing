@@ -95,7 +95,7 @@ export default function Home() {
                 Learning how to vibe code like a true YC founder.
               </p>
               <p className="text-zinc-400 text-lg">
-                Doing something marketing-design-product-y.
+                Choosing a dorm at Georgia Tech.
               </p>
             </div>
           </div>
