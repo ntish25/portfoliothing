@@ -4,9 +4,8 @@ import { CgDarkMode } from 'react-icons/cg'
 import {useTheme} from 'next-themes'
 
 const links = [
-    { label: "Page 1", href: "/" },
-    { label: "Page 2", href: "/" },
-    { label: "Page 3", href: "/" },
+    { label: "Work", href: "/work" },
+    { label: "About", href: "/about" },
 ]
 
 export default function Nav() {
