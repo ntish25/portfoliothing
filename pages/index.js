@@ -41,7 +41,7 @@ export default function Home() {
         <style jsx global>{`
           @font-face {
             font-family: 'Departure Mono';
-            src: url('/fonts/DepartureMono.woff2') format('woff2');
+            src: url('/fonts/DepartureMono-Regular.woff2') format('woff2');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
