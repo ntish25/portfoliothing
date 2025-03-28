@@ -89,13 +89,13 @@ export default function Home() {
             <h2 className="text-sm font-departure uppercase tracking-wider text-zinc-600 mb-4">CURRENTLY</h2>
             <div className="space-y-4 font-instrument">
               <p className="text-zinc-400 text-lg">
-                Building digital experiences for forward-thinking brands and startups.
+                Ensuring that students like me get into their dream school @ <a href="esslo.org" target="_blank">Esslo</a>.
               </p>
               <p className="text-zinc-400 text-lg">
-                Exploring the boundaries of interactive design and creative coding.
+                Learning how to vibe code like a true YC founder.
               </p>
               <p className="text-zinc-400 text-lg">
-                Available for select freelance projects starting May 2025.
+                Doing something marketing-design-product-y.
               </p>
             </div>
           </div>
