@@ -1,13 +1,12 @@
 import Head from 'next/head'
 
 export default function HeadObject({children}) {
-    const title = "The Perfect Next.js Theme";
-    const description = "This is the perfect Next.js theme that you should use instead of create-next-app.";
+    const title = "tishgarten.";
+    const description = "uhhh this is my portfolio click on it if you want to see cool stuff or work with me.";
     const searchBarColor = "#ffffff"; // This is your Safari 15 Search Bar Color in Light Mode
     //const darkSearchBarColor = "#000000"; // This is your Safari 15 Search Bar Color in Dark Mode (optional)
-    const keywords = "put some fun keywords here";
-    const author = "Sarthak Mohanty";
-    const twitter = "@sarthaktexas";
+    const keywords = "portfolio, nathan tishgarten, design, web design, graphic design";
+    const author = "Nathan Tishgarten";
     const url = "http://localhost:3000"; // This is your og:url or domain (optional but recommended)
     //const image = "/ogimage.png"; // This is your OpenGraph image
     return (
