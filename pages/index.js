@@ -77,10 +77,10 @@ export default function Home() {
           {/* Title Block - Now Interactive */}
           <div className="text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-gowun text-zinc-300 leading-tight">
-            <InteractiveText text={"Figma truther from Atlanta who refuses to be called a \"creative.\""} />
+            <InteractiveText text={"Figma truther from Atlanta"} />
             </h1>
             <p className="text-lg mt-8 max-w-2xl text-zinc-500 font-instrument">
-              crafting pixel-perfect experiences at the intersection of design and technology
+              please don't call me a "creative" though.
             </p>
           </div>
           
