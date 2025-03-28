@@ -33,6 +33,13 @@
   ::selection {
     @apply bg-blue-600 text-zinc-100;
   }
+
+  /* Fix for text descenders in gradient text */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    overflow-y: visible;
+    padding-bottom: 0.1em;
+  }
 }
 
 /* Smooth scrolling */

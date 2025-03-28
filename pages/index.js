@@ -4,35 +4,28 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-// Updated Header Component with Gradient Hover Effect
+// Updated Header Component with Gradient Hover Effect and proper text display
 const InteractiveText = ({ text }) => {
   return (
-    <motion.div 
-      className="inline-block text-left text-zinc-300 transition-all duration-300"
+    <motion.span 
+      className="inline-block text-left text-zinc-300 transition-all duration-300 overflow-visible"
+      style={{
+        display: 'inline-block',
+        width: 'auto',
+        whiteSpace: 'nowrap',
+        paddingBottom: '0.1em' // Add slight padding to avoid clipping descenders
+      }}
       whileHover={{
-        boxShadow: "inset 0px 1px 2px rgba(0, 0, 0, 0.15)",
+        background: "linear-gradient(135deg, #6ab7ff 0%, #ffc8a2 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        textFillColor: "transparent",
         transition: { duration: 0.3 }
       }}
-      style={{
-        borderRadius: "4px",
-        padding: "2px 4px",
-        margin: "-2px -4px"
-      }}
     >
-      <motion.span 
-        className="inline-block"
-        whileHover={{
-          background: "linear-gradient(135deg, #6ab7ff 0%, #ffc8a2 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-          textFillColor: "transparent",
-          transition: { duration: 0.3 }
-        }}
-      >
-        {text}
-      </motion.span>
-    </motion.div>
+      {text}
+    </motion.span>
   );
 };
 
