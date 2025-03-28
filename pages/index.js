@@ -77,10 +77,10 @@ export default function Home() {
           {/* Title Block - Now Interactive */}
           <div className="text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-gowun text-zinc-300 leading-tight">
-            <InteractiveText text={"Figma truther from Atlanta"} />
+            <InteractiveText text={"Figma truther from Atlanta."} />
             </h1>
             <p className="text-lg mt-8 max-w-2xl text-zinc-500 font-instrument">
-              please don't call me a "creative" though.
+              please don't call me a "creative" though :)
             </p>
           </div>
           
@@ -89,7 +89,7 @@ export default function Home() {
             <h2 className="text-sm font-departure uppercase tracking-wider text-zinc-600 mb-4">CURRENTLY</h2>
             <div className="space-y-4 font-instrument">
               <p className="text-zinc-400 text-lg">
-                Ensuring that students like me get into their dream school @ <a href="https://www.esslo.org" target="_blank">Esslo</a>.
+                Helping students like me get into their dream school @ <a href="https://www.esslo.org" target="_blank">Esslo</a>.
               </p>
               <p className="text-zinc-400 text-lg">
                 Learning how to vibe code like a true YC founder.
