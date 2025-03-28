@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html.dark {
-    color: #ffffff;
-    background-color: #000000;
-}
-
 /* Fixes Tailwind h-screen on iPhones */
 @supports (-webkit-touch-callout: none) {
     .h-screen {

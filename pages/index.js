@@ -3,7 +3,7 @@ import Nav from '../components/nav';
 
 export default function Home() {
   return (
-    <div className="dark:text-white dark:bg-black">
+    <div>
       <HeadObject>
         {/* You can put extra tags in here, or leave it blank */}
       </HeadObject>
