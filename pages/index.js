@@ -149,7 +149,6 @@ export default function Home() {
           </div>
           <div className="flex space-x-4 font-departure text-sm">
             <a href="mailto:hello@yourdomain.com" className="hover:text-zinc-400 transition-colors">EMAIL</a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">TWITTER</a>
             <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">GITHUB</a>
           </div>
         </div>
