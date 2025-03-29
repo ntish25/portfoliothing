@@ -46,7 +46,7 @@ body {
 }
 
 .progress-animate {
-  animation: progressAnimation 3s ease-in-out forwards;
+  animation: progressAnimation 4s linear forwards;
 }
 
 /* Fix for truncated text */

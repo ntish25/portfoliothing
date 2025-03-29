@@ -80,7 +80,7 @@ export default function Home() {
         {/* Navigation Bar - With gradient reveal on hover */}
         <nav className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-30 backdrop-blur-xl border-b border-white border-opacity-10">
           <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-            <Link href="/" className="opacity-80 hover:opacity-100 transition-opacity">
+            <Link href="/" className="opacity-80 hover:opacity-100 transition-opacity hover-reveal:hover">
             <svg width="30" height="36" viewBox="0 0 30 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo">
               <g clip-path="url(#clip0_22_74)">
               <path d="M8.79646 23.5421C7.91722 26.2176 7.46102 29.0611 7.41854 31.7537C7.42028 32.8548 7.40865 34.0473 7.802 35.064C8.02836 35.6496 8.50318 36.3094 9.20611 35.8426C9.62042 35.5849 10.0923 34.7178 10.3321 34.0396C10.6352 33.2272 10.8953 32.3714 11.1496 31.5405C11.9346 28.9464 12.6707 26.2443 13.9671 23.75C16.7015 18.2934 21.3519 16.6727 27.4275 14.6499C27.9692 14.4521 28.4906 14.2425 28.9194 14.0234C29.8953 13.5459 30.6116 12.8106 29.2395 12.2904C27.7009 11.7731 25.7115 11.8242 24.0094 11.9852C16.6287 12.7168 10.74 17.1555 8.80169 23.5279L8.79646 23.5427V23.5421Z" fill="white"/>
@@ -193,7 +193,7 @@ export default function Home() {
                 className="absolute right-0 mr-6 mt-2 p-4 w-72 backdrop-blur-xl bg-black bg-opacity-20 border border-white border-opacity-20 rounded-lg shadow-xl z-50"
               >
                 <p className="text-white font-['Overpass_Mono'] text-sm">
-                  "can someone genuinely define what this means. thx."
+                  can someone genuinely define what this means. thx.
                 </p>
               </motion.div>
             )}

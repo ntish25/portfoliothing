@@ -13,7 +13,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'sunset-gradient': 'linear-gradient(to right, #f5a9b8, #5b9bd5)',
+        'sunset-gradient': 'linear-gradient(to right,rgb(255, 149, 165),rgb(71, 156, 235))',
       },
       backdropBlur: {
         xs: '4px',
