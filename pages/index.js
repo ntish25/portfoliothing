@@ -16,7 +16,7 @@ export default function Home() {
       id: 1,
       title: "Project One",
       image: "/images/project1.jpg",
-      year: "2024"
+      year: "2025"
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ export default function Home() {
       id: 3,
       title: "Project Three",
       image: "/images/project3.jpg",
-      year: "2023"
+      year: "2022-2025"
     }
   ];
   
@@ -69,8 +69,8 @@ export default function Home() {
       
       <div className="relative z-20">
         <Head>
-          <title>Nathan Tishgarten | Portfolio</title>
-          <meta name="description" content="Portfolio of Nathan Tishgarten - Figma Truther" />
+          <title>tishgarten</title>
+          <meta name="description" content="look at some cool stuff. maybe even work with me." />
           <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✧</text></svg>" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -81,9 +81,18 @@ export default function Home() {
         <nav className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-30 backdrop-blur-xl border-b border-white border-opacity-10">
           <div className="container mx-auto px-6 py-4 flex justify-between items-center">
             <Link href="/" className="opacity-80 hover:opacity-100 transition-opacity">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white" />
-              </svg>
+            <svg width="30" height="36" viewBox="0 0 30 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo">
+              <g clip-path="url(#clip0_22_74)">
+              <path d="M8.79646 23.5421C7.91722 26.2176 7.46102 29.0611 7.41854 31.7537C7.42028 32.8548 7.40865 34.0473 7.802 35.064C8.02836 35.6496 8.50318 36.3094 9.20611 35.8426C9.62042 35.5849 10.0923 34.7178 10.3321 34.0396C10.6352 33.2272 10.8953 32.3714 11.1496 31.5405C11.9346 28.9464 12.6707 26.2443 13.9671 23.75C16.7015 18.2934 21.3519 16.6727 27.4275 14.6499C27.9692 14.4521 28.4906 14.2425 28.9194 14.0234C29.8953 13.5459 30.6116 12.8106 29.2395 12.2904C27.7009 11.7731 25.7115 11.8242 24.0094 11.9852C16.6287 12.7168 10.74 17.1555 8.80169 23.5279L8.79646 23.5427V23.5421Z" fill="white"/>
+              <path d="M21.1428 4.39425C21.9133 0.353468 20.6826 -2.281 17.6236 2.79789C15.8343 5.5933 13.5591 9.15006 10.2574 11.0606C8.55421 12.0708 6.58858 12.8036 4.71082 13.464C3.87929 13.7538 3.08443 14.0128 2.35823 14.2646C1.85198 14.4433 1.34515 14.6334 0.890697 14.9078C-0.11132 15.4933 -0.367353 16.3806 0.634083 16.9477C1.06061 17.1924 1.56045 17.3136 2.12838 17.3949C11.2647 18.1729 19.4874 12.6272 21.1394 4.41028L21.1423 4.39484L21.1428 4.39425Z" fill="white"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_22_74">
+                  <rect width="30" height="36" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+
             </Link>
             
             <div className="flex items-center space-x-8 font-['Overpass_Mono']">
@@ -152,7 +161,7 @@ export default function Home() {
           {/* Name and Description Section - With gradient reveal hover */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
             <div>
-              <h1 className="text-7xl font-['Instrument_Sans'] font-light tracking-tight text-white">
+              <h1 className="text-7xl font-['Instrument_Sans'] font-semibold tracking-tight text-white">
                 <span className="hover-reveal">Nathan Tishgarten.</span>
               </h1>
             </div>
@@ -184,7 +193,7 @@ export default function Home() {
                 className="absolute right-0 mr-6 mt-2 p-4 w-72 backdrop-blur-xl bg-black bg-opacity-20 border border-white border-opacity-20 rounded-lg shadow-xl z-50"
               >
                 <p className="text-white font-['Overpass_Mono'] text-sm">
-                  I hate being called a "creative" because it reduces the technical and strategic aspects of design to just making things look pretty. I prefer to be seen as a problem-solver who happens to use visual tools.
+                  "can someone genuinely define this."
                 </p>
               </motion.div>
             )}

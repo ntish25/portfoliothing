@@ -16,7 +16,7 @@ module.exports = {
         'sunset-gradient': 'linear-gradient(to right, #f5a9b8, #5b9bd5)',
       },
       backdropBlur: {
-        xs: '2px',
+        xs: '4px',
       },
       colors: {
         'blue-dark': '#1a2a50',
