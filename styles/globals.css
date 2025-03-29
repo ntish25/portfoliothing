@@ -2,14 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Site-wide styles - Monochromatic */
+/* Foundation Styles */
 body {
-  background-color: #121212;
-  min-height: 100vh;
   color: white;
   font-family: 'Instrument Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Selection styling */
@@ -18,47 +17,29 @@ body {
   color: white;
 }
 
-/* Glassmorphism for cards and modals */
-.glass {
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+/* Enhanced Glassmorphism Effects */
+.backdrop-blur-xl {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-/* Sunset gradient for individual letter hover effects */
-.sunset-gradient {
-  background: linear-gradient(to right, #f5a9b8, #5b9bd5);
+/* Gradient Hover Reveal Effect */
+.hover-reveal {
+  position: relative;
+  color: white;
   background-clip: text;
   -webkit-background-clip: text;
+  transition: color 0.3s ease;
+}
+
+.hover-reveal:hover {
   color: transparent;
+  background-image: linear-gradient(to right, #f5a9b8, #5b9bd5);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-/* Smooth transitions */
-a, button, .transition-all {
-  transition: all 0.3s ease;
-}
-
-/* Better responsive handling for safari */
-@supports (-webkit-touch-callout: none) {
-  .min-h-screen {
-    min-height: -webkit-fill-available;
-  }
-}
-
-/* Custom animation for the project slider */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-/* Enhanced progress bar animation */
+/* Progress Bar Animation */
 @keyframes progressAnimation {
   0% { width: 0; }
   100% { width: 100%; }
@@ -68,7 +49,7 @@ a, button, .transition-all {
   animation: progressAnimation 5s linear forwards;
 }
 
-/* Fix for truncated text in gradient headings */
+/* Fix for truncated text */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   overflow-y: visible;
@@ -80,7 +61,14 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom logo styles - for replacement */
+/* Better responsive handling for safari */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Custom logo styles */
 .logo {
   transition: transform 0.3s ease;
 }
@@ -89,9 +77,11 @@ html {
   transform: rotate(15deg);
 }
 
-/* Rounded progress indicators */
-.progress-indicator {
-  height: 8px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+/* Glass elements styling */
+main > div, nav, .glass {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 1px 8px rgba(255, 255, 255, 0.05),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.15);
 }
