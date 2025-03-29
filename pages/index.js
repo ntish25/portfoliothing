@@ -161,7 +161,7 @@ export default function Home() {
           {/* Name and Description Section - With gradient reveal hover */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
             <div>
-              <h1 className="text-7xl font-['Instrument_Sans'] font-semibold tracking-tight text-white">
+              <h1 className="text-7xl font-['Instrument_Sans'] font-normal tracking-tight text-white">
                 <span className="hover-reveal">Nathan Tishgarten.</span>
               </h1>
             </div>
@@ -193,7 +193,7 @@ export default function Home() {
                 className="absolute right-0 mr-6 mt-2 p-4 w-72 backdrop-blur-xl bg-black bg-opacity-20 border border-white border-opacity-20 rounded-lg shadow-xl z-50"
               >
                 <p className="text-white font-['Overpass_Mono'] text-sm">
-                  "can someone genuinely define this."
+                  "can someone genuinely define what this means. thx."
                 </p>
               </motion.div>
             )}

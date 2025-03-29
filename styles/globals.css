@@ -34,7 +34,7 @@ body {
 
 .hover-reveal:hover {
   color: transparent;
-  background-image: linear-gradient(to right, #f5a9b8, #5b9bd5);
+  background-image: linear-gradient(to top right, #f5a9b8, #5b9bd5);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -46,7 +46,7 @@ body {
 }
 
 .progress-animate {
-  animation: progressAnimation 5s linear forwards;
+  animation: progressAnimation 3s ease-in-out forwards;
 }
 
 /* Fix for truncated text */
