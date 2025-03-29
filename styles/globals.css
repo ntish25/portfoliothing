@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Site-wide styles */
+/* Site-wide styles - Monochromatic */
 body {
-  background: linear-gradient(to bottom, #1a2a50 0%, #2b5797 40%, #5b9bd5 70%, #f5a9b8 100%);
+  background-color: #121212;
   min-height: 100vh;
-  background-attachment: fixed;
   color: white;
   font-family: 'Instrument Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,20 +14,20 @@ body {
 
 /* Selection styling */
 ::selection {
-  background: rgba(245, 169, 184, 0.5);
+  background: rgba(255, 255, 255, 0.2);
   color: white;
 }
 
-/* Glassmorphism */
+/* Glassmorphism for cards and modals */
 .glass {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Sunset gradient for hover effects */
+/* Sunset gradient for individual letter hover effects */
 .sunset-gradient {
   background: linear-gradient(to right, #f5a9b8, #5b9bd5);
   background-clip: text;
@@ -59,22 +58,14 @@ a, button, .transition-all {
   to { opacity: 0; }
 }
 
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out forwards;
-}
-
-.fade-out {
-  animation: fadeOut 0.5s ease-in-out forwards;
-}
-
-/* Progress bar animation */
+/* Enhanced progress bar animation */
 @keyframes progressAnimation {
-  from { width: 0; }
-  to { width: 100%; }
+  0% { width: 0; }
+  100% { width: 100%; }
 }
 
 .progress-animate {
-  animation: progressAnimation 5s linear;
+  animation: progressAnimation 5s linear forwards;
 }
 
 /* Fix for truncated text in gradient headings */
@@ -87,4 +78,20 @@ h1, h2, h3, h4, h5, h6 {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Custom logo styles - for replacement */
+.logo {
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: rotate(15deg);
+}
+
+/* Rounded progress indicators */
+.progress-indicator {
+  height: 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }

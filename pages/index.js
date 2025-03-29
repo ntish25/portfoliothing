@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Home() {
   const [showCreativePopup, setShowCreativePopup] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [animateProgress, setAnimateProgress] = useState(true);
   const creativeRef = useRef(null);
   
   // Project data
@@ -34,7 +35,11 @@ export default function Home() {
   // Auto slide functionality
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % projects.length);
+      setAnimateProgress(false);
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % projects.length);
+        setAnimateProgress(true);
+      }, 300);
     }, 5000);
     
     return () => clearInterval(interval);
@@ -54,35 +59,51 @@ export default function Home() {
     };
   }, []);
   
+  // Individual letter hover effect for nav items
+  const HoverableText = ({ text, className }) => {
+    return (
+      <span className={className}>
+        {text.split('').map((char, index) => (
+          <span 
+            key={index} 
+            className="inline-block hover:bg-gradient-to-r hover:from-[#f5a9b8] hover:to-[#5b9bd5] hover:bg-clip-text hover:text-transparent transition-all duration-300"
+          >
+            {char}
+          </span>
+        ))}
+      </span>
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1a2a50] via-[#2b5797] via-[#5b9bd5] to-[#f5a9b8] bg-fixed">
+    <div className="min-h-screen bg-[#121212]">
       <Head>
         <title>Nathan Tishgarten | Portfolio</title>
-        <meta name="description" content="tishgarten" />
+        <meta name="description" content="Portfolio of Nathan Tishgarten - Figma Truther" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✧</text></svg>" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Overpass+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
       
-      {/* Navigation Bar - Glass Effect */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black bg-opacity-10 border-b border-white border-opacity-10">
+      {/* Navigation Bar - Monochromatic with hover effects */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-50 backdrop-blur-md border-b border-white border-opacity-10">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="opacity-80 hover:opacity-100 transition-opacity">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo">
               <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white" />
             </svg>
           </Link>
           
           <div className="flex items-center space-x-8 font-['Overpass_Mono']">
-            <Link href="/work" className="text-white text-sm tracking-wider opacity-70 hover:opacity-100 transition-opacity hover:bg-gradient-to-r hover:from-[#f5a9b8] hover:to-[#5b9bd5] hover:bg-clip-text hover:text-transparent">
-              WORK
+            <Link href="/work" className="text-white text-sm tracking-wider opacity-70 hover:opacity-100 transition-opacity">
+              <HoverableText text="WORK" className="" />
             </Link>
-            <Link href="/about" className="text-white text-sm tracking-wider opacity-70 hover:opacity-100 transition-opacity hover:bg-gradient-to-r hover:from-[#f5a9b8] hover:to-[#5b9bd5] hover:bg-clip-text hover:text-transparent">
-              ABOUT
+            <Link href="/about" className="text-white text-sm tracking-wider opacity-70 hover:opacity-100 transition-opacity">
+              <HoverableText text="ABOUT" className="" />
             </Link>
-            <Link href="/contact" className="text-white text-sm tracking-wider opacity-70 hover:opacity-100 transition-opacity hover:bg-gradient-to-r hover:from-[#f5a9b8] hover:to-[#5b9bd5] hover:bg-clip-text hover:text-transparent">
-              CONTACT
+            <Link href="/contact" className="text-white text-sm tracking-wider opacity-70 hover:opacity-100 transition-opacity">
+              <HoverableText text="CONTACT" className="" />
             </Link>
             <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-white opacity-70 hover:opacity-100 transition-opacity">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,9 +118,9 @@ export default function Home() {
       
       {/* Main Content */}
       <main className="container mx-auto px-6 pt-32 pb-16">
-        {/* Project Showcase Card */}
+        {/* Project Showcase Card - Reduced Height */}
         <div className="mb-16">
-          <div className="relative overflow-hidden rounded-lg backdrop-blur-lg bg-black bg-opacity-10 border border-white border-opacity-10 aspect-video">
+          <div className="relative overflow-hidden rounded-lg bg-black bg-opacity-20 border border-white border-opacity-10" style={{ height: '40vh', maxHeight: '500px' }}>
             {/* Project Slides */}
             <div className="h-full">
               {projects.map((project, index) => (
@@ -119,39 +140,55 @@ export default function Home() {
               ))}
             </div>
             
-            {/* Progress Bar */}
-            <div className="absolute bottom-0 left-0 right-0 flex">
+            {/* Rounded, Animated Progress Bar */}
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-3 px-6">
               {projects.map((_, index) => (
                 <div 
                   key={index} 
-                  className="h-1 flex-1 mx-px transition-all duration-300"
-                  style={{
-                    backgroundColor: index === currentSlide ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.3)'
-                  }}
-                />
+                  className="relative h-2 w-full max-w-24 rounded-full overflow-hidden bg-white bg-opacity-20"
+                >
+                  {index === currentSlide && animateProgress && (
+                    <div 
+                      className="absolute top-0 left-0 h-full rounded-full bg-white transition-all duration-300"
+                      style={{
+                        width: '100%',
+                        animation: 'progressAnimation 5s linear'
+                      }}
+                    />
+                  )}
+                </div>
               ))}
             </div>
           </div>
         </div>
         
-        {/* Name and Description Section */}
+        {/* Name and Description Section - With individual letter hover */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
             <h1 className="text-7xl font-['Instrument_Sans'] font-light tracking-tight text-white">
-              Nathan Tishgarten.
+              {/* Apply the same hover effect to each letter in the name */}
+              {'Nathan Tishgarten.'.split('').map((char, index) => (
+                <span 
+                  key={index} 
+                  className="inline-block hover:bg-gradient-to-r hover:from-[#f5a9b8] hover:to-[#5b9bd5] hover:bg-clip-text hover:text-transparent transition-all duration-300"
+                >
+                  {char}
+                </span>
+              ))}
             </h1>
           </div>
           
           <div className="flex flex-col justify-end">
             <div className="font-['Instrument_Sans'] text-white opacity-80 text-right">
-              <p className="mb-2">ATLANTA-BORN DESIGNER, MARKETER, AND 
+              <p className="mb-2">
+                <HoverableText text="ATLANTA-BORN DESIGNER, MARKETER, AND" className="" />
                 <span 
-                  className="relative cursor-pointer hover:bg-gradient-to-r hover:from-[#f5a9b8] hover:to-[#5b9bd5] hover:bg-clip-text hover:text-transparent"
+                  className="relative cursor-pointer hover:bg-gradient-to-r hover:from-[#f5a9b8] hover:to-[#5b9bd5] hover:bg-clip-text hover:text-transparent transition-all duration-300"
                   onClick={() => setShowCreativePopup(true)}
                 > CREATIVE?</span>
               </p>
-              <p className="mb-2">FIGMA TRUTHER TIL' THE END.</p>
-              <p>CHRONIC MK.GEE LISTENER.</p>
+              <p className="mb-2"><HoverableText text="FIGMA TRUTHER TIL' THE END." className="" /></p>
+              <p><HoverableText text="CHRONIC MK.GEE LISTENER." className="" /></p>
             </div>
           </div>
         </div>
