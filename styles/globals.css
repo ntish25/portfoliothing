@@ -2,77 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Site-wide gradient background */
+/* Site-wide styles */
 body {
   background: linear-gradient(to bottom, #1a2a50 0%, #2b5797 40%, #5b9bd5 70%, #f5a9b8 100%);
   min-height: 100vh;
   background-attachment: fixed;
+  color: white;
+  font-family: 'Instrument Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Gradient animations */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+/* Selection styling */
+::selection {
+  background: rgba(245, 169, 184, 0.5);
+  color: white;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Sunset gradient for hover effects */
+.sunset-gradient {
+  background: linear-gradient(to right, #f5a9b8, #5b9bd5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Smooth transitions */
+a, button, .transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Better responsive handling for safari */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
   }
 }
 
-@font-face {
-  font-family: 'Departure Mono';
-  src: url('/fonts/DepartureMono-Regular.woff2') format('woff2'),
-       url('/fonts/DepartureMono-Regular.woff') format('woff'),
-       url('/fonts/DepartureMono-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+/* Custom animation for the project slider */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@layer base {
-  body {
-    @apply text-white;
-  }
-  
-  ::selection {
-    @apply bg-pink-500 text-white;
-  }
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
 
-  /* Fix for text descenders in gradient text */
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2;
-    overflow-y: visible;
-    padding-bottom: 0.1em;
-  }
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
 
-  /* Glass effect for cards */
-  .glass-card {
-    @apply bg-indigo-900 bg-opacity-20 backdrop-blur-sm rounded-lg shadow-lg;
-  }
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+/* Progress bar animation */
+@keyframes progressAnimation {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.progress-animate {
+  animation: progressAnimation 5s linear;
+}
+
+/* Fix for truncated text in gradient headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  overflow-y: visible;
+  padding-bottom: 0.1em;
 }
 
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-}
-
-/* Better font rendering */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Fixes Tailwind h-screen on iPhones */
-@supports (-webkit-touch-callout: none) {
-  .h-screen {
-    height: -webkit-fill-available;
-  }
-}
-
-/* Fixes outline style for inputs on Safari */
-input:focus { 
-  outline: none; 
 }
