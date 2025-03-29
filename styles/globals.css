@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Site-wide gradient background */
+body {
+  background: linear-gradient(to bottom, #1a2a50 0%, #2b5797 40%, #5b9bd5 70%, #f5a9b8 100%);
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
 /* Gradient animations */
 @keyframes gradientShift {
   0% {
@@ -27,11 +34,11 @@
 
 @layer base {
   body {
-    @apply bg-zinc-900 text-zinc-300;
+    @apply text-white;
   }
   
   ::selection {
-    @apply bg-blue-600 text-zinc-100;
+    @apply bg-pink-500 text-white;
   }
 
   /* Fix for text descenders in gradient text */
@@ -39,6 +46,11 @@
     line-height: 1.2;
     overflow-y: visible;
     padding-bottom: 0.1em;
+  }
+
+  /* Glass effect for cards */
+  .glass-card {
+    @apply bg-indigo-900 bg-opacity-20 backdrop-blur-sm rounded-lg shadow-lg;
   }
 }
 
